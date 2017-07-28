@@ -47,8 +47,9 @@ class Handler extends ExceptionHandler {
             if ($e instanceof NotFoundHttpException) {
                 // Handle 404 exceptions
                 if (env('SETTING_REDIRECT_404')) {
-                    // Redirect 404s to SETTING_INDEX_REDIRECT
-                    return redirect()->to(env('SETTING_INDEX_REDIRECT'));
+                    // Redirect 404s to SETTING_404_REDIRECT
+                    // Redirect to external 404 page
+                    return redirect()->to(env('SETTING_404_REDIRECT'));
                 }
                 // Otherwise, show a nice error page
                 return view('errors.404');
